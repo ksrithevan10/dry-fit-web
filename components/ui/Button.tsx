@@ -39,7 +39,7 @@ function classes({
   className,
 }: Omit<StyleProps, "children" | "arrow">) {
   return cx(
-    "group inline-flex items-center gap-3 rounded-pill pr-2.5 pl-6.5 text-ui font-semibold transition-colors duration-300",
+    "group inline-flex items-center gap-3 rounded-pill pr-2.5 pl-6.5 text-ui font-semibold",
     variants[variant].button,
     sizes[size],
     block && "w-full justify-between",
