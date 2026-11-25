@@ -6,6 +6,7 @@
  */
 
 import { reviews } from "./reviews";
+import { weFit, yourTrades } from "./scope";
 import { services } from "./services";
 import { site } from "./site";
 
@@ -154,27 +155,8 @@ export const home = {
     label: "(03) What is dry fitting?",
     heading: "Everything that makes it a kitchen.",
     body: "Dry fitting is the joinery side of a kitchen install. We fit it all, then your plumber, gas engineer and electrician connect it.",
-    weFit: {
-      title: "We fit",
-      items: [
-        "Base, wall and tall units",
-        "Doors, drawers and handles",
-        "Laminate and solid wood worktops",
-        "End panels, plinths and cornice",
-        "Integrated appliance housings [confirm]",
-        "Final adjustment and alignment",
-      ],
-    },
-    yourTrades: {
-      title: "Done by your own trades",
-      items: [
-        "Plumbing and sinks connected",
-        "Gas and electrics",
-        "Tiling and splashbacks",
-        "Plastering and decorating",
-        "Stone worktop templating",
-      ],
-    },
+    weFit,
+    yourTrades,
   },
 
   reviews: {

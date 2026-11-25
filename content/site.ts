@@ -42,6 +42,7 @@ const address = {
 };
 
 const email = "[Email]@dry-fit.com";
+const whatsappHref = "https://wa.me/[number]";
 const companyNumber = "[Company no.]";
 
 export const site = {
@@ -53,7 +54,7 @@ export const site = {
   address,
   email,
   companyNumber,
-  whatsappHref: "https://wa.me/[number]",
+  whatsappHref,
   googleRating: "[4.9]",
   googleReviewCount: "[X]",
   serviceRadius: "Harrow + [X] miles",
@@ -105,6 +106,23 @@ export const site = {
     details: `${companyNumber} · ${address.street}, ${address.locality} ${address.postcode} · ${email}`,
   },
 
+  /** Quote call to action shown at the end of inner pages. */
+  quoteCta: {
+    heading: "Your kitchen, dry fitted properly.",
+    body: "Send us the plan from your showroom and we'll confirm one fixed price after a free survey.",
+    primary: { label: "Get my fixed quote", href: "/quote" },
+    secondary: { label: "WhatsApp us", href: whatsappHref },
+  },
+
+  notFound: {
+    title: "Page not found",
+    label: "404",
+    heading: "This page isn't here.",
+    body: "The link may be old or mistyped. Try the homepage, or get a fixed quote for your kitchen.",
+    home: { label: "Back to the homepage", href: "/" },
+    quote: { label: "Get my fixed quote", href: "/quote" },
+  },
+
   /** Interface labels used by the layout. */
   ui: {
     skipLink: "Skip to content",
@@ -114,6 +132,8 @@ export const site = {
     primaryNav: "Primary",
     footerNav: "Footer",
     legalNav: "Legal",
+    breadcrumb: "Breadcrumb",
+    home: "Home",
   },
 
   seo: {
