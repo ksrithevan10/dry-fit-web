@@ -1,3 +1,11 @@
 export { ArrowChip } from "./ArrowChip";
 export { Button, ButtonLink } from "./Button";
+export { Card } from "./Card";
+export { Chip } from "./Chip";
+export { ImageSlot } from "./ImageSlot";
 export { Logo } from "./Logo";
+export { Marquee } from "./Marquee";
+export { OptionGroup } from "./OptionGroup";
+export { SectionLabel } from "./SectionLabel";
+export { StarIcon } from "./StarIcon";
+export { Stars } from "./Stars";
