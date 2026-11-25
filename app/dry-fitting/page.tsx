@@ -31,11 +31,11 @@ export default function DryFittingPage() {
       />
 
       <div className="container-site flex flex-wrap gap-5 pb-section">
-        <Card className="grow basis-80 reveal gap-4.5">
+        <Card className="grow basis-80 gap-4.5">
           <h2 className="font-heading text-heading-s">{page.weFit.title}</h2>
           <CheckList items={page.weFit.items} />
         </Card>
-        <Card tone="alt" className="grow basis-80 reveal gap-4.5">
+        <Card tone="alt" className="grow basis-80 gap-4.5">
           <h2 className="font-heading text-heading-s">
             {page.yourTrades.title}
           </h2>
