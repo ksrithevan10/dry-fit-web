@@ -1,3 +1,4 @@
+/** Homepage sections arrive in feat/homepage. */
 export default function HomePage() {
-  return <main />;
+  return null;
 }
