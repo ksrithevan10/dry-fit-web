@@ -41,6 +41,7 @@
   /* Lines and form borders on light surfaces */
   --color-line: rgb(23 21 15 / 0.16);
   --color-option-border: #cfc7bb;
+  --color-error: #b3261e; /* form errors, AA on bg and white */
   --color-faint: #8f877b; /* large text and icons only: below AA for body text */
 
   /* Fonts (CSS variables are set by next/font in app/layout.tsx) ---------- */
