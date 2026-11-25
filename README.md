@@ -35,4 +35,4 @@ design/              The design reference (not production code)
 ```
 
 More detail on editing copy, adding images and deploying arrives with the
-handover phase. See `CONTRIBUTING.md` for branch and commit rules.
+handover phase, along with `CONTRIBUTING.md` for the designer.
