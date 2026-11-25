@@ -1,0 +1,223 @@
+/*
+ * Dry-Fit design tokens
+ * ---------------------
+ * This file is the single source of truth for colour, type, radius, spacing
+ * and motion. Components use the Tailwind utilities these tokens generate
+ * (e.g. `bg-primary`, `text-display-l`, `rounded-card`) and never hex values
+ * or one-off sizes.
+ *
+ * Tailwind's default colour palette and type scale are switched off below
+ * (`--color-*: initial`, `--text-*: initial`) so only these tokens exist.
+ * To restyle the site, change the values here.
+ */
+
+@import "tailwindcss";
+
+@theme {
+  /* Colours ---------------------------------------------------------------- */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-bg: #f5f1ea; /* page background */
+  --color-ink: #17150f; /* main text */
+  --color-muted: #5b544a; /* secondary text on light surfaces */
+  --color-primary: #1f5a43; /* buttons, links, labels, top bar */
+  --color-primary-hover: #174636;
+  --color-dark: #17150f; /* dark panels and sections */
+  --color-card: #ffffff;
+  --color-card-alt: #eae4da; /* secondary card */
+  --color-star: #f2c94c;
+  --color-white: #ffffff;
+  --color-button-light-hover: #f1ece3; /* white button hover */
+
+  /* Text and lines on dark surfaces */
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #bdb5a8;
+  --color-on-dark-line: #3a352e;
+
+  /* Lines and form borders on light surfaces */
+  --color-line: rgb(23 21 15 / 0.16);
+  --color-option-border: #cfc7bb;
+  --color-faint: #8f877b; /* large text and icons only: below AA for body text */
+
+  /* Fonts (CSS variables are set by next/font in app/layout.tsx) ---------- */
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale ------------------------------------------------------------- */
+  --text-*: initial;
+
+  /* Body and UI sizes */
+  --text-label: 0.75rem; /* 12px section labels */
+  --text-label--line-height: 1.4;
+  --text-xs: 0.8125rem; /* 13px */
+  --text-xs--line-height: 1.6;
+  --text-sm: 0.875rem; /* 14px */
+  --text-sm--line-height: 1.6;
+  --text-ui: 0.9375rem; /* 15px buttons, nav */
+  --text-ui--line-height: 1.5;
+  --text-base: 1rem; /* 16px */
+  --text-base--line-height: 1.65;
+  --text-lead: 1.0625rem; /* 17px */
+  --text-lead--line-height: 1.65;
+  --text-lg: 1.125rem; /* 18px hero body */
+  --text-lg--line-height: 1.6;
+
+  /* Display sizes (Bricolage Grotesque), fluid with clamp() */
+  --text-heading-s: 1.625rem; /* 26px card headings */
+  --text-heading-s--line-height: 1.1;
+  --text-heading-m: 1.75rem; /* 28px card headings */
+  --text-heading-m--line-height: 1.1;
+  --text-logo: 1.875rem; /* 30px */
+  --text-logo--line-height: 1;
+  --text-summary: clamp(1.5rem, 1.2rem + 1vw, 1.875rem); /* 24–30px */
+  --text-summary--line-height: 1.15;
+  --text-numeral: 3.5rem; /* 56px card numerals */
+  --text-numeral--line-height: 1;
+  --text-marquee: clamp(1.875rem, 3.6vw, 3.25rem); /* brand strip */
+  --text-marquee--line-height: 1;
+  --text-display-m: clamp(2.125rem, 5vw, 4.75rem); /* "What we fit" list */
+  --text-display-m--line-height: 1;
+  --text-display-l: clamp(2.5rem, 5vw, 4.5rem); /* section h2 */
+  --text-display-l--line-height: 1;
+  --text-display-xl: clamp(2.75rem, 6.6vw, 6.5rem); /* hero h1 */
+  --text-display-xl--line-height: 0.98;
+  --text-display-area: clamp(3rem, 7.4vw, 7.5rem); /* area marquee */
+  --text-display-area--line-height: 1.15;
+  --text-display-cta: clamp(3rem, 8vw, 8rem); /* closing CTA */
+  --text-display-cta--line-height: 0.95;
+
+  /* Letter spacing */
+  --tracking-display: -0.03em;
+  --tracking-label: 0.12em;
+
+  /* Radius ----------------------------------------------------------------- */
+  --radius-card: 1.5rem; /* 24px */
+  --radius-panel: 1.75rem; /* 28px */
+  --radius-review: 1.25rem; /* 20px */
+  --radius-input: 0.875rem; /* 14px */
+  --radius-pill: 9999px;
+
+  /* Layout ----------------------------------------------------------------- */
+  --container-site: 87.5rem; /* 1400px max content width */
+  --spacing-gutter: 1.25rem; /* side padding on phones */
+  --spacing-gutter-lg: 2.5rem; /* side padding from md up */
+  --spacing-section: 7.5rem; /* 120px vertical rhythm between sections */
+  --spacing-button: 3.375rem; /* 54px button height */
+  --spacing-touch: 2.75rem; /* 44px minimum touch target */
+
+  /* Shadows -------------------------------------------------------------- */
+  --shadow-menu: 0 24px 48px -24px rgb(23 21 15 / 0.25);
+
+  /* Motion ----------------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.2, 0.7, 0, 1);
+}
+
+/* Base ---------------------------------------------------------------------- */
+@layer base {
+  :root {
+    /* Focus ring colour. Dark surfaces override it with `.surface-dark`. */
+    --focus-ring: var(--color-primary);
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+}
+
+/* Utilities ----------------------------------------------------------------- */
+@utility surface-dark {
+  background-color: var(--color-dark);
+  color: var(--color-on-dark);
+  --focus-ring: var(--color-on-dark);
+}
+
+@utility surface-primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-dark);
+  --focus-ring: var(--color-on-dark);
+}
+
+/* Centred content column with responsive side gutters. */
+@utility container-site {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+
+  @media (width >= 48rem) {
+    padding-inline: var(--spacing-gutter-lg);
+  }
+}
+
+/* Display type: Bricolage Grotesque 700, tight tracking. */
+@utility font-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+}
+
+/* Numbered section labels, e.g. "(01) Get a price". */
+@utility type-label {
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* Underline that draws in from the left on hover (nav links). */
+@utility link-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -3px;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+
+  &:hover::after,
+  &[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Reduced motion: no animation or transition, final states shown. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
