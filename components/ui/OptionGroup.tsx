@@ -1,4 +1,5 @@
 import { cx } from "@/lib/cx";
+import { FieldError } from "./form/Field";
 
 type OptionGroupProps = {
   name: string;
@@ -6,6 +7,9 @@ type OptionGroupProps = {
   options: ReadonlyArray<{ value: string; label: string }>;
   value: string;
   onChange: (value: string) => void;
+  /** Error message shown under the legend. */
+  error?: string;
+  required?: boolean;
   className?: string;
 };
 
@@ -19,11 +23,19 @@ export function OptionGroup({
   options,
   value,
   onChange,
+  error,
+  required,
   className,
 }: OptionGroupProps) {
+  const errorId = `${name}-error`;
   return (
-    <fieldset className={cx("flex flex-col gap-3.5", className)}>
+    <fieldset
+      className={cx("flex flex-col gap-3.5", className)}
+      aria-describedby={error ? errorId : undefined}
+      aria-invalid={error ? true : undefined}
+    >
       <legend className="mb-3.5 type-label text-muted">{legend}</legend>
+      {error && <FieldError id={errorId}>{error}</FieldError>}
       <div className="flex flex-wrap gap-2.5">
         {options.map((option) => (
           <label key={option.value} className="relative">
@@ -33,6 +45,7 @@ export function OptionGroup({
               value={option.value}
               checked={value === option.value}
               onChange={() => onChange(option.value)}
+              required={required}
               className="peer sr-only"
             />
             <span className="inline-flex min-h-12 cursor-pointer items-center rounded-pill border-[1.5px] border-option-border bg-card px-5 text-ui font-semibold peer-checked:border-ink peer-checked:bg-ink peer-checked:text-on-dark peer-focus-visible:outline-2 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-primary hover:border-ink">
