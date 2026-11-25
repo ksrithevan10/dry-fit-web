@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useActionState, useEffect, useRef, useState } from "react";
 import { submitQuote, type QuoteState } from "@/app/quote/actions";
 import { Button } from "@/components/ui/Button";
@@ -34,7 +33,6 @@ export function QuoteForm({
   turnstileSiteKey,
 }: QuoteFormProps) {
   const { fields, groups, timingOptions, sections } = quoteForm;
-  const params = useSearchParams();
   const [state, action, pending] = useActionState<QuoteState, FormData>(
     submitQuote,
     {},
@@ -43,17 +41,24 @@ export function QuoteForm({
   const [outsideArea, setOutsideArea] = useState(false);
   const summaryRef = useRef<HTMLDivElement>(null);
 
-  const [choices, setChoices] = useState<Record<string, string>>(() =>
-    Object.fromEntries(
-      GROUPS.map((name) => {
-        const fromUrl = params.get(name) ?? "";
+  const [choices, setChoices] = useState<Record<string, string>>({});
+
+  // Prefill the kitchen choices from the URL once the page has loaded. Reading
+  // them after hydration lets the whole form be prerendered (no layout shift).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = Object.fromEntries(
+      GROUPS.flatMap((name) => {
+        const value = params.get(name) ?? "";
         const valid = groups[name].options.some(
-          (option) => option.value === fromUrl,
+          (option) => option.value === value,
         );
-        return [name, valid ? fromUrl : ""];
+        return valid ? [[name, value]] : [];
       }),
-    ),
-  );
+    );
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off sync from the URL
+    setChoices((current) => ({ ...fromUrl, ...current }));
+  }, [groups]);
 
   // After a failed submit: move focus to the error summary and get a fresh
   // spam-check token.
@@ -192,7 +197,7 @@ export function QuoteForm({
                 name={name}
                 legend={groups[name].legend}
                 options={groups[name].options}
-                value={choices[name] || value(name)}
+                value={choices[name] ?? value(name)}
                 onChange={(next) =>
                   setChoices((current) => ({ ...current, [name]: next }))
                 }

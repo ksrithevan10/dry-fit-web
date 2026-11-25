@@ -69,9 +69,9 @@ export function PriceBuilder({
       className="container-site py-section"
     >
       <form action={submit.href} method="get" className="flex flex-wrap gap-12">
-        <div className="flex grow-[1.4] basis-130 reveal flex-col gap-9">
-          <SectionLabel>{label}</SectionLabel>
-          <h2 id="price-heading" className="font-heading text-display-l">
+        <div className="flex grow-[1.4] basis-130 flex-col gap-9">
+          <SectionLabel className="reveal">{label}</SectionLabel>
+          <h2 id="price-heading" className="reveal font-heading text-display-l">
             {heading}
           </h2>
           {groups.map((group) => (

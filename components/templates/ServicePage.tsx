@@ -39,12 +39,12 @@ export function ServicePage({ content }: { content: ServicePageContent }) {
       />
 
       <div className="container-site flex flex-wrap gap-5 pb-section">
-        <Card className="grow basis-80 reveal gap-4.5">
+        <Card className="grow basis-80 gap-4.5">
           <h2 className="font-heading text-heading-s">{included.title}</h2>
           <CheckList items={included.items} />
         </Card>
         {notIncluded && (
-          <Card tone="alt" className="grow basis-80 reveal gap-4.5">
+          <Card tone="alt" className="grow basis-80 gap-4.5">
             <h2 className="font-heading text-heading-s">{notIncluded.title}</h2>
             <CheckList items={notIncluded.items} variant="dash" />
           </Card>

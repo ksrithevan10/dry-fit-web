@@ -27,7 +27,7 @@ export default function ReviewsPage() {
 
       <ul className="container-site grid gap-5 pb-section sm:grid-cols-2 lg:grid-cols-3">
         {reviews.map((review, index) => (
-          <li key={index} className="reveal">
+          <li key={index}>
             <figure className="flex h-full flex-col gap-4 rounded-review bg-card p-7">
               <Stars
                 rating={review.rating}

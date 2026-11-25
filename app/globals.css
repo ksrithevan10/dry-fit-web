@@ -285,7 +285,8 @@
   @supports (animation-timeline: view()) {
     animation: reveal-up linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 28%;
+    /* Fully shown once the whole element is on screen. */
+    animation-range: entry 0% entry 100%;
   }
 }
 

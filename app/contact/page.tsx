@@ -23,7 +23,7 @@ export default function ContactPage() {
 
       <div className="container-site grid gap-5 pb-section sm:grid-cols-2 lg:grid-cols-3">
         {page.methods.map((method) => (
-          <Card key={method.label} className="reveal gap-3">
+          <Card key={method.label} className="gap-3">
             <SectionLabel as="h2" tone="muted">
               {method.label}
             </SectionLabel>
@@ -38,7 +38,7 @@ export default function ContactPage() {
             )}
           </Card>
         ))}
-        <Card className="reveal gap-3">
+        <Card className="gap-3">
           <SectionLabel as="h2" tone="muted">
             {page.address.label}
           </SectionLabel>
@@ -50,7 +50,7 @@ export default function ContactPage() {
             ))}
           </address>
         </Card>
-        <Card className="reveal gap-3">
+        <Card className="gap-3">
           <SectionLabel as="h2" tone="muted">
             {page.area.label}
           </SectionLabel>
