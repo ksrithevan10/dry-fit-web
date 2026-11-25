@@ -4,8 +4,10 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { TopBar } from "@/components/layout/TopBar";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/content/site";
 import { siteUrl } from "@/lib/env";
+import { businessSchema } from "@/lib/schema";
 import "./globals.css";
 
 /** Headings: Bricolage Grotesque 500–700, with the optical size axis. */
@@ -61,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <JsonLd data={businessSchema()} />
       </body>
     </html>
   );

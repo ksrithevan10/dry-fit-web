@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/Card";
+import { CheckList } from "@/components/ui/CheckList";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
 type List = { title: string; items: readonly string[] };
@@ -10,47 +11,6 @@ export type WhatIsDryFittingProps = {
   weFit: List;
   yourTrades: List;
 };
-
-function CheckIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="mt-1 shrink-0"
-    >
-      <path
-        d="M5 12.5l4.5 4.5L19 7.5"
-        fill="none"
-        className="stroke-primary"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function DashIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="mt-1 shrink-0"
-    >
-      <path
-        d="M6 12h12"
-        fill="none"
-        className="stroke-faint"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 /** "(03) What is dry fitting?": what we fit versus what your trades do. */
 export function WhatIsDryFitting({
@@ -76,25 +36,11 @@ export function WhatIsDryFitting({
       <div className="flex grow-[1.4] basis-130 flex-wrap gap-5">
         <Card className="grow basis-70 reveal gap-4.5">
           <h3 className="font-heading text-heading-s">{weFit.title}</h3>
-          <ul className="flex flex-col gap-3 text-base">
-            {weFit.items.map((item) => (
-              <li key={item} className="flex gap-3">
-                <CheckIcon />
-                {item}
-              </li>
-            ))}
-          </ul>
+          <CheckList items={weFit.items} />
         </Card>
         <Card tone="alt" className="grow basis-70 reveal gap-4.5">
           <h3 className="font-heading text-heading-s">{yourTrades.title}</h3>
-          <ul className="flex flex-col gap-3 text-base text-muted">
-            {yourTrades.items.map((item) => (
-              <li key={item} className="flex gap-3">
-                <DashIcon />
-                {item}
-              </li>
-            ))}
-          </ul>
+          <CheckList items={yourTrades.items} variant="dash" />
         </Card>
       </div>
     </section>

@@ -26,3 +26,17 @@ export const reviews: Review[] = Array.from({ length: 6 }, () => ({
 export function ratingLabel(rating: number): string {
   return `Rated ${rating} out of 5`;
 }
+
+export const reviewsPage = {
+  meta: {
+    title: "Reviews",
+    description:
+      "What customers say about Dry-Fit, kitchen dry fitters in Harrow and North West London.",
+  },
+  label: "Reviews",
+  heading: "What our customers say.",
+  googleLink: {
+    label: "Read all our Google reviews",
+    href: "[Google reviews URL]",
+  },
+};

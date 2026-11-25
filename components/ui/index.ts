@@ -9,3 +9,4 @@ export { OptionGroup } from "./OptionGroup";
 export { SectionLabel } from "./SectionLabel";
 export { StarIcon } from "./StarIcon";
 export { Stars } from "./Stars";
+export { CheckList } from "./CheckList";
